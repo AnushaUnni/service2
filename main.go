@@ -14,6 +14,12 @@ import (
 func main() {
 	// Use the library directly
 	a, b := 3, 5
+	redisAddr := os.Getenv("REDIS_ADDR")
+	if redisAddr == "" {
+		redisAddr = "redis:6379" // Default Redis address
+	}
+	calculate.InitRedis(redisAddr) // Initialize Redis in the library
+
 	sum := calculate.Sum(a, b)
 	fmt.Printf("Using library: The sum of %d and %d is %d\n", a, b, sum)
 
