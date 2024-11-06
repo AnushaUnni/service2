@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  service2:
+    build: .
+    container_name: service2
+    ports:
+      - "8081:8081"
+    environment:
+      - SERVICE1_API_URL=http://host.docker.internal:8080 # Points to Service1's API
